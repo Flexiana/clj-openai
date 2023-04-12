@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-clj -T:build ci
+clojure -T:build ci

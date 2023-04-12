@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-clj -X:test :nses ["$@"]
+clojure -X:test :nses ["$@"]

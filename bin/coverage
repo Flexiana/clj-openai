@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-clj -M:coverage
+clojure -M:coverage

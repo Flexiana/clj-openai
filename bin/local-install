@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-clj -T:build local-install
+clojure -T:build local-install
