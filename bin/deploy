@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+if [ -z "${CLOJARS_USERNAME}" ]; then
+  echo "CLOJARS_USERNAME env var is not set"
+  exit 1
+elif [ -z "${CLOJARS_PASSWORD}" ]; then
+  echo "CLOJARS_PASSWORD env var is not set"
+  exit 1
+else
+  clj -T:build deploy
+fi
