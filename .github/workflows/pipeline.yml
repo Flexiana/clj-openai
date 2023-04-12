@@ -1,0 +1,37 @@
+name: Lint, test, build and deploy pipeline
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  ci-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Clojure
+      uses: DeLaGuardo/setup-clojure@5.0
+      with:
+        cli: 1.11.1.1113
+      
+    - name: Cache clojure dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.m2/repository
+          ~/.gitlibs
+          ~/.deps.clj
+        key: cljdeps-${{ hashFiles('deps.edn') }}
+        restore-keys: cljdeps-
+
+    - name: Run CI pipeline
+      run: ./bin/ci
+
+    - name: Deploy to Clojars
+      env:
+        CLOJARS_USERNAME: ${{ secrets.CLOJARS_LOGIN }}
+        CLOJARS_PASSWORD: ${{ secrets.CLOJARS_PASSWORD }}
+      run: ./bin/deploy
