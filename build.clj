@@ -3,7 +3,7 @@
   (:require [org.corfield.build :as bb]))
 
 (def ^:private lib 'com.flexiana/clj-openai)
-(def ^:private version "0.1.0")
+(def ^:private version "0.1.1")
 
 (defn ci
   "Run the CI pipeline of tests (and build the JAR)."

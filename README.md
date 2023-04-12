@@ -66,6 +66,8 @@ Example:
 
 ## Development
 
+When introducing a new version, bump the version number in `build.clj`. After it's merged into `master` branch, create a git tag on the last commit and push the tag, it will trigger deploy to Clojars.
+
 There are utility scripts in the `bin/` directory for some common tasks:
 
 * `./bin/nrepl` starts nREPL
