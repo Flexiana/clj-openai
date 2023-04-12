@@ -6,5 +6,5 @@ elif [ -z "${CLOJARS_PASSWORD}" ]; then
   echo "CLOJARS_PASSWORD env var is not set"
   exit 1
 else
-  clj -T:build deploy
+  clojure -T:build deploy
 fi
