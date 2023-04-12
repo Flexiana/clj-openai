@@ -14,7 +14,9 @@ A simple ChatGPT client for Clojure.
 
 `clj-openai` provides 2 functions: `completions` and `chat-completions`. They both take config map as first argument. They both return string on success and error map on failure.
 
-### [completions](https://platform.openai.com/docs/guides/completion)
+### Completions
+
+[Docs](https://platform.openai.com/docs/guides/completion)
 
 Function parameters:
 1. config map
@@ -27,7 +29,9 @@ Example usage:
                 "hello")
 ```
 
-### [chat-completions](https://platform.openai.com/docs/guides/chat)
+### Chat completions
+
+[Docs](https://platform.openai.com/docs/guides/chat)
 
 Function parameters:
 1. config map
@@ -45,8 +49,8 @@ Example usage:
 Config map is passed as first argument to all provided functions.
 Available config keys:
 
-- :api-key - mandatory, managed [here](https://platform.openai.com/account/api-keys)
-- :base-url - optional, defaults to `https://api.openai.com/v1` 
+- `:api-key` - mandatory, managed [here](https://platform.openai.com/account/api-keys)
+- `:base-url` - optional, defaults to `https://api.openai.com/v1` 
 
 ### Errors
 
@@ -62,34 +66,17 @@ Example:
 
 ## Development
 
-Start nREPL:
+There are utility scripts in the `bin/` directory for some common tasks:
 
-    $ ./bin/nrepl
-
-Run the project's tests (accepts all -X arguments, [docs](https://github.com/cognitect-labs/test-runner)):
-
-    $ ./bin/test
-
-Run tests in single namespace:
-
-    $ ./bin/test-ns clj-openai.core-test
-
-Run a single test:
-
-    $ ./bin/test-var clj-openai.core-test/completion
-
-
-Run the project's CI pipeline and build a jar:
-
-    $ ./bin/ci
-
-Install the jar locally:
-
-    $ clj -T:build local-install
-
-Deploy the jar to clojars ('CLOJARS_USERNAME' and 'CLOJARS_PASSWORD' env vars must be set):
-
-    $ ./bin/deploy
+* `./bin/nrepl` starts nREPL
+* `./bin/test` runs all tests (accepts all -X arguments, [docs](https://github.com/cognitect-labs/test-runner))
+* `./bin/test-ns clj-openai.core-test` runs tests in a single namespace
+* `./bin/test-var clj-openai.core-test/completion` runs a single test
+* `./bin/lint` runs kondo and eastwood
+* `./bin/coverage` runs test coverage check
+* `./bin/ci` run the project's CI pipeline and builds a jar
+* `./bin/local-install` installs the jar into local maven repo 
+* `./bin/deploy` deploys the jar to clojars, `CLOJARS_USERNAME` and `CLOJARS_PASSWORD` env vars must be set
 
 ## License
 

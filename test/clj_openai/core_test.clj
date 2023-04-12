@@ -6,12 +6,13 @@
 
 (deftest completion
   (testing "returns message extracted from body on success"
-    (with-fake-routes {"https://api.openai.com/v1/completions"
-                         {:post (fn [_]
-                                  {:status 200,
-                                   :body (json/generate-string
-                                           {:choices [{:text "foo"}]})})}}
-                      (is (= "foo" (completions {:api-key "key"} "bar")))))
+    (with-fake-routes
+      {"http://url/completions"
+         {:post (fn [_]
+                  {:status 200,
+                   :body (json/generate-string {:choices [{:text "foo"}]})})}}
+      (is (= "foo"
+             (completions {:api-key "key", :base-url "http://url"} "bar")))))
   (testing "returns whole body on failure"
     (with-fake-routes
       {"https://api.openai.com/v1/completions"

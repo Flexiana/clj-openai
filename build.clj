@@ -13,6 +13,7 @@
              :version version)
       (bb/run-task [:kondo])
       (bb/run-task [:eastwood])
+      (bb/run-task [:coverage])
       bb/run-tests
       bb/clean
       bb/jar))
